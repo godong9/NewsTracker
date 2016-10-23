@@ -1,0 +1,26 @@
+{
+  "name": "news-tracker",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Donghyun Go <godong9@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/godong9/NewsTracker",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/javascripts/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
+    "underscore": "^1.8.3",
+    "jquery-ui": "^1.12.1",
+    "swiper": "^3.4.0"
+  }
+}

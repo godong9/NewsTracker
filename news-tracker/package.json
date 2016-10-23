@@ -11,7 +11,29 @@
     "debug": "~2.2.0",
     "ejs": "~2.4.1",
     "express": "~4.13.4",
+    "express-session": "^1.14.1",
+    "log4js": "^0.6.38",
     "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.0"
+    "mysql": "^2.11.1",
+    "request": "^2.75.0",
+    "serve-favicon": "^2.3.0",
+    "underscore": "^1.8.3",
+    "validator": "^6.1.0"
+  },
+  "devDependencies": {
+    "apidoc": "^0.16.1",
+    "bower": "^1.7.9",
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-apidoc": "^0.2.4",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-istanbul": "^1.1.1",
+    "gulp-jshint": "^2.0.1",
+    "gulp-mocha": "^3.0.1",
+    "gulp-uglify": "^2.0.0",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "mocha": "^3.1.2",
+    "webpack-stream": "^3.2.0"
   }
 }
