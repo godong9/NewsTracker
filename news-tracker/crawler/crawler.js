@@ -1,6 +1,8 @@
 var Crawler = require('crawler');
 var url = require('url');
 var fs = require('fs');
+var log4js = require('log4js');
+var logger = log4js.getLogger('crawler');
 var articleModel = new (require('../models/articles'));
 
 var NEWS_JOINS_ROOT = 'http://news.joins.com';
@@ -65,7 +67,7 @@ var c = new Crawler({
 
     // 기사 본문 내용
     $('body').each(function(index, tag) {
-      console.log("URI:", result.uri);
+      logger.info("URI:", result.uri);
       // 중앙일보 기사
       getNewsJoinsArticleData($, tag, result.uri);
       // 조선일보 기사
