@@ -3,7 +3,8 @@ var url = require('url');
 var fs = require('fs');
 var log4js = require('log4js');
 var logger = log4js.getLogger('crawler');
-var articleModel = new (require('../models/articles'));
+
+var ArticleModel = require('../models/articles');
 
 var NEWS_JOINS_ROOT = 'http://news.joins.com';
 var NEWS_CHOSUN_ROOT = 'http://search.chosun.com';
@@ -89,13 +90,14 @@ function getNewsJoinsArticleData($, tag, uri) {
   var content = $(tag).find('div#article_body').text();
   if (title.length > 0 && content.length > 0) {
     var criteria = {
+      issue_id: currentIssueId,
       title: title,
       content: content,
       write_at: $(tag).find('div.byline > em').last().text().split('입력 ')[1],
       uri: uri,
       company_id: NEWS_JOINS_COMPANY_ID
     };
-    articleModel.insert(criteria);
+    ArticleModel.insert(criteria);
   }
 }
 
@@ -105,13 +107,14 @@ function getChosunArticleData($, tag, uri) {
   var content = $(tag).find('div.par').text();
   if (title.length > 0 && content.length > 0) {
     var criteria = {
+      issue_id: currentIssueId,
       title: title,
       content: content,
       write_at: $(tag).find('p#date_text').text().trim().split(' : ')[1],
       uri: uri,
       company_id: NEWS_CHOSUN_COMPANY_ID
     };
-    articleModel.insert(criteria);
+    ArticleModel.insert(criteria);
   }
 }
 
@@ -121,13 +124,14 @@ function getChosunBizArticleData($, tag, uri) {
   var content = $(tag).find('div.article').text();
   if (title.length > 0 && content.length > 0) {
     var criteria = {
+      issue_id: currentIssueId,
       title: title,
       content: content,
       write_at: $(tag).find('p#date_text').text().trim().split(' : ')[1],
       uri: uri,
       company_id: NEWS_CHOSUN_COMPANY_ID
     };
-    articleModel.insert(criteria);
+    ArticleModel.insert(criteria);
   }
 }
 
@@ -137,13 +141,14 @@ function getNewsDongaArticleData($, tag, uri) {
   var content = $(tag).find('div.article_txt').text();
   if (title.length > 0 && content.length > 0) {
     var criteria = {
+      issue_id: currentIssueId,
       title: title,
       content: content,
       write_at: $(tag).find('p.title_foot > span.date').text(),
       uri: uri,
       company_id: NEWS_DONGA_COMPANY_ID
     };
-    articleModel.insert(criteria);
+    ArticleModel.insert(criteria);
   }
 }
 
@@ -153,13 +158,14 @@ function getNewsHaniArticleData($, tag, uri) {
   var content = $(tag).find('div.article-text div.text').text();
   if (title.length > 0 && content.length > 0) {
     var criteria = {
+      issue_id: currentIssueId,
       title: title,
       content: content,
       write_at: $(tag).find('p.date-time > span').first().text().split(' :')[1],
       uri: uri,
       company_id: NEWS_HANI_COMPANY_ID
     };
-    articleModel.insert(criteria);
+    ArticleModel.insert(criteria);
   }
 }
 
@@ -187,6 +193,7 @@ var newsJoinsIssueNo = 10357;
 var chosunSearchStr = '4대강사업';
 var dongaIssueStr = 'List_03000000000068';
 var haniIssueNo = 78;
+var currentIssueId = 1;
 
 c.queue({
   uri: getNewsJoinsIssueUri(newsJoinsIssueNo),
