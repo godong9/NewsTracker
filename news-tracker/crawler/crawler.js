@@ -39,6 +39,7 @@ var c = new Crawler({
 
     // 동아일보 기사 페이지에서 페이지 번호에 해당하는 URI 추출해서 큐에 추가
     $('div.page > a').each(function(index, a) {
+      // TODO: 페이지 번호 일정 이상 넘어가면 멈추도록 수정
       var toQueueUri = $(a).attr('href');
       c.queue(result.uri + toQueueUri);
     });
